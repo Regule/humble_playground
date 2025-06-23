@@ -1,0 +1,37 @@
+{
+    "name": "ROS2 Humble",
+    "privileged": true,
+    "remoteUser": "regule",
+    "build":{
+        "dockerfile": "Dockerfile",
+        "args": {"USERNAME": "regule"}
+    },
+    "workspaceFolder": "/home/regule",
+    "workspaceMount": "source=${localWorkspaceFolder}, target=/home/regule, type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "twxs.cmake",
+                "ms-iot.vscode-ros"
+            ]
+        }
+    },
+    "containerEnv": {
+        "DISPLAY": "unix:0",
+        "ROS_AUTOMATIC_DISCOVERY_RANGE":"LOCALHOST",
+        "ROS_DOMAIN_ID":"0"
+    },
+    "runArgs": [
+        "--net=host",
+        "--pid=host",
+        "--ipc=host",
+        "-e",
+        "DISPLAY=${env:DISPLAY}"
+    ],
+    "mounts": [
+        "source=/tmp/.X11-unix, target=/tmp/.X11-unix, type=bind consistency=cached",
+        "source=/dev/dri, target=/dev/dri, type=bind, consistency=cached"
+    ],
+    "postCreateCommand": "echo source /opt/ros/humble/setup.bash >> ~/.bashrc"
+}
