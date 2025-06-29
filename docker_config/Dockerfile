@@ -30,4 +30,5 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python3-pip
 
 # Set default user and default shell
+ENV SHELL /bin/bash
 USER $USERNAME
