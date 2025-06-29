@@ -27,7 +27,7 @@ RUN chmod 0440 /etc/sudoers.d/$USERNAME
 # Update system and install extra packages
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-pip ros-humble-desktop ros-humble-ros-gz
 
 # Set default user and default shell
 ENV SHELL /bin/bash
